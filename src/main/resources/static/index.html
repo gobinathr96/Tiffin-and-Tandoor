@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiffin & Tandoor — Order Food Online</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <a href="#home" class="brand">
+        <img src="images/logo.png" alt="Tiffin & Tandoor logo" class="brand-logo">
+        Tiffin &amp; Tandoor
+    </a>
+    <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#today-special">Today's Special</a>
+        <a href="#offers">Offer &amp; Discount</a>
+        <a href="#tables">Table Booking</a>
+        <a href="#about">About</a>
+        <a href="#address">Address</a>
+    </nav>
+    <div class="header-right">
+        <span class="user-badge" id="userBadge"></span>
+        <button class="cart-btn" onclick="toggleCart()">
+            Cart
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-rating">★★★★☆ 4-star rated · Veg &amp; Non-Veg</span>
+        <h1>Good food, ordered simply.</h1>
+        <p>Browse today's menu, add what you're craving, and check out in a couple of taps. Built as a learning project on top of a Spring Boot REST API.</p>
+    </div>
+</section>
+
+<section class="today-special reveal" id="today-special">
+    <h2>Today's Special</h2>
+    <div class="menu-grid" id="specialGrid">
+        <p class="empty-msg">Loading today's specials…</p>
+    </div>
+</section>
+
+<section class="offers reveal" id="offers">
+    <h2>Offers &amp; Discounts</h2>
+    <div class="offer-grid">
+        <div class="offer-card">
+            <span class="offer-badge">10% OFF</span>
+            <h3>Loyalty Tier 1</h3>
+            <p>Collect 100+ loyalty points and get 10% off your next order automatically at checkout.</p>
+        </div>
+        <div class="offer-card">
+            <span class="offer-badge">20% OFF</span>
+            <h3>Loyalty Tier 2</h3>
+            <p>Collect 200+ loyalty points and get 20% off your next order automatically at checkout.</p>
+        </div>
+        <div class="offer-card">
+            <span class="offer-badge">EARN</span>
+            <h3>Points on every order</h3>
+            <p>Earn 1 point for every ₹100 you spend (up to 10 points per order) — no code needed.</p>
+        </div>
+    </div>
+</section>
+
+<div class="categories" id="categories"></div>
+
+<div class="menu-grid" id="menuGrid">
+    <p class="empty-msg">Loading menu…</p>
+</div>
+
+<section class="tables reveal" id="tables">
+    <h2>Table Management &amp; Booking</h2>
+    <p class="section-sub">Reserve a table for dine-in. Every table has its own table number, which is also printed on your bill.</p>
+    <div class="table-grid" id="tableGrid">
+        <p class="empty-msg">Loading tables…</p>
+    </div>
+</section>
+
+<section class="about reveal" id="about">
+    <h2>About Us</h2>
+    <div class="about-box">
+        <span class="rating-line">★★★★☆ <strong>4.0</strong> rating</span>
+        <p>Tiffin &amp; Tandoor is a veg &amp; non-veg restaurant serving fresh, home-style South Indian tiffin and tandoor favourites, made to order and delivered quickly to your door.</p>
+        <div class="hours-row">
+            <span class="hours-icon">🕒</span>
+            <div>
+                <span class="hours-label">Open every day</span>
+                <span class="hours-time">11:00 AM – 11:00 PM</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="address reveal" id="address">
+    <h2>Find Us</h2>
+    <div class="address-box">
+        <p>📍 National Highway, Upparpatti, Theni, Tamil Nadu - 625534</p>
+        <p>📞 Phone: <a href="tel:+919876543210">9876543210</a></p>
+        <p>☎️ Landline: <a href="tel:+14499889988">+144 9988 9988</a></p>
+        <p>✉️ Mail: <a href="mailto:s17173188@gmail.com">s17173188@gmail.com</a></p>
+        <p>🕒 Open daily: 11:00 AM – 11:00 PM</p>
+        <a class="map-link-btn" href="https://maps.app.goo.gl/5dwdG91APc29jrxH6" target="_blank" rel="noopener">📍 Open in Google Maps</a>
+        <div class="map-embed">
+            <iframe
+                src="https://www.google.com/maps?q=9.954026,77.422664&output=embed"
+                width="100%" height="260" style="border:0"
+                allowfullscreen loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Tiffin &amp; Tandoor · National Highway, Upparpatti, Theni, Tamil Nadu - 625534 · Ph: 9876543210</p>
+</footer>
+
+<div class="cart-drawer" id="cartDrawer">
+    <h2>Your Cart</h2>
+    <div id="cartItems"></div>
+    <div class="total-row">
+        <span>Total</span>
+        <span id="cartTotal">₹0</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Place Order</button>
+</div>
+
+<!-- Shown once per browser until a mobile number is entered -->
+<div class="bill-overlay open" id="phoneOverlay">
+    <div class="bill-modal welcome-modal">
+        <img src="images/chef.jpg" alt="Welcoming chef" class="welcome-chef">
+        <h2 class="welcome-title">Welcome to Tiffin &amp; Tandoor! 👋</h2>
+        <p class="desc">Enter your mobile number so we can save your order history and loyalty points — no password needed.</p>
+        <label class="field-label">Mobile number</label>
+        <input type="tel" id="phoneInput" placeholder="10-digit mobile number" maxlength="10">
+        <label class="field-label">Your name (first time only)</label>
+        <input type="text" id="nameInput" placeholder="e.g. Gobinath">
+        <div class="bill-actions">
+            <span></span>
+            <button onclick="submitPhone()">Continue</button>
+        </div>
+    </div>
+</div>
+
+<!-- Table booking modal -->
+<div class="bill-overlay" id="tableBookingOverlay">
+    <div class="bill-modal">
+        <h2 id="tableBookingTitle">Book table</h2>
+        <p class="desc">Enter your name and mobile number to hold this table.</p>
+        <label class="field-label">Your name</label>
+        <input type="text" id="tableBookingName" placeholder="e.g. Gobinath">
+        <label class="field-label">Mobile number</label>
+        <input type="tel" id="tableBookingPhone" placeholder="10-digit mobile number" maxlength="10">
+        <div class="bill-actions">
+            <button class="secondary-btn" onclick="closeTableBooking()">Cancel</button>
+            <button onclick="confirmTableBooking()">Confirm booking</button>
+        </div>
+    </div>
+</div>
+
+<div class="bill-overlay" id="billOverlay">
+    <div class="bill-modal">
+        <h2>Order placed!</h2>
+        <pre id="billText"></pre>
+        <div class="bill-actions">
+            <a id="downloadBillLink" href="#" download>Download bill</a>
+            <button onclick="closeBill()">Close</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

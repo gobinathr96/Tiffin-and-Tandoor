@@ -1,0 +1,859 @@
+/* ============================================================
+   Design tokens
+   Palette: warm ivory background, near-black ink, saffron accent,
+   tomato CTA, olive for "veg/fresh" tags — a spice-market feel,
+   not a generic SaaS-card look.
+   ============================================================ */
+:root {
+    --ink: #241B14;
+    --ink-soft: #5B4C3F;
+    --bg: #FFF9F0;
+    --bg-raised: #FFFFFF;
+    --line: #E8DCC8;
+    --saffron: #E8A33D;
+    --tomato: #B23A2E;
+    --tomato-dark: #8F2C22;
+    --olive: #5F7A47;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    line-height: 1.5;
+}
+
+h1, h2, h3, .brand {
+    font-family: 'Fraunces', Georgia, serif;
+}
+
+/* ---------------- Header ---------------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    border-bottom: 1px solid var(--line);
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* ---------------- Nav tags ---------------- */
+.main-nav {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 2px;
+    border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+    color: var(--tomato-dark);
+    border-bottom-color: var(--saffron);
+}
+
+.cart-btn {
+    position: relative;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--tomato);
+    color: white;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------- Hero ---------------- */
+.hero {
+    position: relative;
+    padding: 96px 32px;
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    background-image: url('../images/hero-bg.webp');
+    background-size: cover;
+    background-position: center;
+    isolation: isolate;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(36,27,20,0.78) 0%, rgba(36,27,20,0.55) 45%, rgba(36,27,20,0.15) 100%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+}
+
+.hero-rating {
+    display: inline-block;
+    background: rgba(255, 249, 240, 0.92);
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: 2.75rem;
+    line-height: 1.1;
+    margin: 0 0 16px;
+    font-weight: 600;
+    color: #FFF9F0;
+}
+
+.hero p {
+    color: #F1E7D6;
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0;
+}
+
+/* ---------------- Offers ---------------- */
+.offers {
+    padding: 48px 32px 8px;
+}
+
+.offers h2 {
+    margin: 0 0 20px;
+    font-size: 1.7rem;
+}
+
+.offer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.offer-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+.offer-badge {
+    display: inline-block;
+    background: var(--tomato);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+
+.offer-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.offer-card p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+}
+
+/* ---------------- About / Address ---------------- */
+.about, .address {
+    padding: 48px 32px;
+    max-width: 820px;
+}
+
+.about h2, .address h2 {
+    margin: 0 0 16px;
+    font-size: 1.7rem;
+}
+
+.about-box, .address-box {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px;
+}
+
+.about-box p, .address-box p {
+    margin: 0 0 8px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+}
+
+.about-box p:last-child, .address-box p:last-child { margin-bottom: 0; }
+
+.rating-line {
+    display: inline-block;
+    color: var(--saffron);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.rating-line strong { color: var(--ink); }
+
+/* ---------------- Footer ---------------- */
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 32px 40px;
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+}
+
+/* ---------------- Address contact links ---------------- */
+.address-box a {
+    color: var(--tomato-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.address-box a:hover { text-decoration: underline; }
+
+/* ---------------- Today's Special ---------------- */
+.today-special {
+    padding: 48px 32px 8px;
+}
+
+.today-special h2 {
+    margin: 0 0 20px;
+    font-size: 1.7rem;
+}
+
+.today-special .menu-grid {
+    padding: 0;
+}
+
+.today-special .food-card {
+    border-color: var(--saffron);
+    position: relative;
+}
+
+.special-flag {
+    position: absolute;
+    top: -10px;
+    right: 14px;
+    background: var(--saffron);
+    color: var(--ink);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+/* ---------------- Table Management & Booking ---------------- */
+.tables {
+    padding: 48px 32px;
+}
+
+.tables h2 {
+    margin: 0 0 6px;
+    font-size: 1.7rem;
+}
+
+.section-sub {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.table-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.table-card.booked {
+    opacity: 0.65;
+}
+
+.table-number {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.table-type {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--olive);
+    font-weight: 600;
+    margin: 4px 0 2px;
+}
+
+.table-capacity {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+}
+
+.table-status-pill {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+
+.table-status-pill.available {
+    background: rgba(95, 122, 71, 0.15);
+    color: var(--olive);
+}
+
+.table-status-pill.booked-pill {
+    background: rgba(178, 58, 46, 0.12);
+    color: var(--tomato-dark);
+}
+
+.table-card button {
+    width: 100%;
+    border: none;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.table-card .book-btn {
+    background: var(--saffron);
+    color: var(--ink);
+}
+
+.table-card .book-btn:hover { background: #d9922f; }
+
+.table-card .release-btn {
+    background: var(--ink);
+    color: var(--bg);
+}
+
+/* ---------------- Welcome / phone modal ---------------- */
+.welcome-modal {
+    text-align: center;
+}
+
+.welcome-chef {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--saffron);
+    margin: 0 auto 12px;
+    display: block;
+}
+
+.welcome-title {
+    margin: 0 0 8px;
+}
+
+.welcome-modal .field-label,
+.welcome-modal .desc {
+    text-align: left;
+}
+
+.secondary-btn {
+    background: transparent !important;
+    color: var(--ink-soft) !important;
+    border: 1px solid var(--line) !important;
+}
+
+/* ---------------- Category tabs ---------------- */
+.categories {
+    display: flex;
+    gap: 10px;
+    padding: 0 32px 24px;
+    flex-wrap: wrap;
+}
+
+.category-chip {
+    border: 1px solid var(--line);
+    background: var(--bg-raised);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--ink-soft);
+}
+
+.category-chip.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+}
+
+/* ---------------- Menu grid ---------------- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 0 32px 64px;
+}
+
+.food-card {
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.food-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.food-card .category-tag {
+    font-size: 0.75rem;
+    color: var(--olive);
+    font-weight: 600;
+}
+
+.food-card p.desc {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.food-card .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--tomato-dark);
+}
+
+.add-btn {
+    background: var(--saffron);
+    border: none;
+    color: var(--ink);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.add-btn:hover { background: #d9922f; }
+
+/* ---------------- Cart drawer ---------------- */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: -380px;
+    width: 360px;
+    height: 100%;
+    background: var(--bg-raised);
+    box-shadow: -4px 0 24px rgba(36, 27, 20, 0.12);
+    transition: right 0.25s ease;
+    padding: 24px;
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.cart-drawer.open { right: 0; }
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.checkout-btn {
+    width: 100%;
+    background: var(--tomato);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.checkout-btn:hover { background: var(--tomato-dark); }
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-top: 16px;
+    font-size: 1.1rem;
+}
+
+.empty-msg {
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ---------------- Bill / receipt modal ---------------- */
+.bill-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(36, 27, 20, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.bill-overlay.open {
+    display: flex;
+}
+
+.bill-modal {
+    background: var(--bg-raised);
+    border-radius: 10px;
+    padding: 28px;
+    max-width: 420px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.bill-modal h2 {
+    margin: 0 0 16px;
+}
+
+.bill-modal pre {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+}
+
+.bill-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.bill-actions a {
+    color: var(--tomato-dark);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.bill-actions button {
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ---------------- Header extras ---------------- */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.user-badge {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+}
+
+/* ---------------- Food image ---------------- */
+.food-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+/* ---------------- Phone modal form fields ---------------- */
+.bill-modal .desc {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: -6px 0 16px;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin: 10px 0 4px;
+}
+
+.bill-modal input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+/* ---------------- Opening hours (About) ---------------- */
+.hours-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+}
+
+.hours-icon {
+    font-size: 1.4rem;
+}
+
+.hours-label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.hours-time {
+    display: block;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.05rem;
+}
+
+/* ---------------- Map (Find Us) ---------------- */
+.map-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--saffron);
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 9px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    margin: 14px 0 16px;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.map-link-btn:hover {
+    background: #d9922f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(232, 163, 61, 0.35);
+}
+
+.map-embed {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    line-height: 0;
+}
+
+.map-embed iframe {
+    display: block;
+    filter: saturate(0.9);
+}
+
+/* ============================================================
+   Motion & interaction polish
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+
+    /* Scroll-reveal: sections fade + rise into view */
+    .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Hero entrance */
+    .hero-rating, .hero h1, .hero p {
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards;
+    }
+
+    .hero-rating { animation-delay: 0.05s; }
+    .hero h1 { animation-delay: 0.2s; }
+    .hero p { animation-delay: 0.35s; }
+
+    @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card lift on hover */
+    .food-card, .offer-card, .table-card, .about-box, .address-box {
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .food-card:hover, .offer-card:hover, .table-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(36, 27, 20, 0.1);
+        border-color: var(--saffron);
+    }
+
+    .food-img {
+        transition: transform 0.4s ease;
+    }
+
+    .food-card:hover .food-img {
+        transform: scale(1.04);
+    }
+
+    /* Special badge breathes gently */
+    .special-flag {
+        animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.06); }
+    }
+
+    /* Buttons: subtle lift + tap feedback */
+    .add-btn, .checkout-btn, .table-card button, .cart-btn, .category-chip {
+        transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .add-btn:hover, .checkout-btn:hover, .table-card .book-btn:hover, .cart-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(36, 27, 20, 0.15);
+    }
+
+    .add-btn:active, .checkout-btn:active, .table-card button:active {
+        transform: translateY(0) scale(0.97);
+    }
+
+    .category-chip:hover {
+        transform: translateY(-1px);
+        border-color: var(--saffron);
+    }
+
+    /* Nav underline slides in */
+    .main-nav a {
+        position: relative;
+        transition: color 0.2s ease;
+    }
+
+    .main-nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background: var(--saffron);
+        transition: width 0.25s ease;
+    }
+
+    .main-nav a:hover::after {
+        width: 100%;
+    }
+
+    /* Cart badge bump when count changes */
+    .cart-count.bump {
+        animation: bump 0.35s ease;
+    }
+
+    @keyframes bump {
+        0% { transform: scale(1); }
+        40% { transform: scale(1.4); }
+        100% { transform: scale(1); }
+    }
+
+    /* Modals ease in */
+    .bill-overlay.open .bill-modal {
+        animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+        from { opacity: 0; transform: translateY(12px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 640px) {
+    header { padding: 16px 20px; }
+    .main-nav { gap: 14px; order: 3; width: 100%; }
+    .hero { padding: 64px 20px; min-height: 300px; }
+    .hero h1 { font-size: 2rem; }
+    .offers, .about, .address, .today-special, .tables { padding: 36px 20px; }
+}
