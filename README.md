@@ -110,7 +110,7 @@ git init
 git add .
 git commit -m "Initial commit: food ordering system (Spring Boot + MySQL)"
 git branch -M main
-git remote add origin https://github.com/<your-username>/food-ordering-system.git
+git remote add origin https://github.com/gobinathr96/food-ordering-system.git
 git push -u origin main
 ```
 
